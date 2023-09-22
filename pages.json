@@ -1,0 +1,243 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#f3f3f7",
+				"navigationBarTextStyle": "white",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#f3f3f7",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor": "#FFFFFF",
+				"backgroundColor": "#f3f3f7",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pagesLogin",
+			"pages": [
+				{
+					"path": "login/login",
+					"style": {
+						"navigationBarTitleText": "登录",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "logonbyphone/logonbyphone",
+					"style": {
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"navigationBarTextStyle": "black"
+					}
+				}
+			]
+		},
+		{
+			"root": "pagesShop",
+			"pages": [
+				{
+					"path": "shopList/shopList",
+					"style": {
+						"navigationBarTitleText": "选择门店",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "goodsShop/goodsShop",
+					"style": {
+						"navigationBarTitleText": "适用门店",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black"
+					}
+				},
+				{
+					"path": "shop/shop",
+					"style": {
+						"navigationBarTitleText": "店铺首页",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "white",
+						"enablePullDownRefresh": true,
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "pagesOrder",
+			"pages": [
+				{
+					"path": "orderDetail/orderDetail",
+					"style": {
+						"navigationBarTitleText": "订单详情",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "calendar/calendar",
+					"style": {
+						"navigationBarTitleText": "预约时间",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "guide/guide",
+					"style": {
+						"navigationBarTitleText": "券号在哪里",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "goodsDetail/goodsDetail",
+					"style": {
+						"navigationBarTitleText": "团购详情",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "white",
+						"enablePullDownRefresh": true,
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "confirmOrder/confirmOrder",
+					"style": {
+						"navigationBarTitleText": "确认订单",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "paySuccess/paySuccess",
+					"style": {
+						"navigationBarTitleText": "支付完成",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		},
+		{
+			"root": "pagesReservation",
+			"pages": [
+				{
+					"path": "reservation/reservation",
+					"style": {
+						"navigationBarTitleText": "预约",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "checktime/checktime",
+					"style": {
+						"navigationBarTitleText": "预约时间",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "confirm/confirm",
+					"style": {
+						"navigationBarTitleText": "预约成功",
+						"navigationBarBackgroundColor": "#FFFFFF",
+						"backgroundColor": "#f3f3f7",
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		}
+	],
+	"preloadRule": {},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#fe2b54",
+		"backgroundColor": "#FFFFFF",
+		"backgroundTextStyle": "dark",
+		"onReachBottomDistance": 50
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#fe2b54",
+		"borderStyle": "white",
+		"backgroundColor": "#FFFFFF",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/img/tabbar1.png",
+				"selectedIconPath": "static/img/tabbar1s.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"iconPath": "static/img/tabbar2.png",
+				"selectedIconPath": "static/img/tabbar2s.png",
+				"text": "订单"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"iconPath": "static/img/tabbar3.png",
+				"selectedIconPath": "static/img/tabbar3s.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition": {
+		"current": 0,
+		"list": [
+			{
+				"name": "",
+				"path": "",
+				"query": ""
+			}
+		]
+	}
+}
