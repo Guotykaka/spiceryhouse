@@ -95,7 +95,8 @@
 					},
 					listShop: null
 				},
-				payOnly: false //防抖拦截
+				payOnly: false, //防抖拦截
+				apiType: 'requestPayment'
 			}
 		},
 		onLoad(query) {
@@ -150,6 +151,11 @@
 				const that = this
 				wx.checkBeforeAddOrder({
 					success(res) {
+						if (res.data.requireOrder == 1 && res.data.requiredFundType == 4) {
+							that.apiType = 'requestOrderPayment'
+						} else {
+							that.apiType = 'requestPayment'
+						}
 						that.payFuc(res.data.requireOrder == 1 ? res.data.traceId : '')
 					},
 					fail() {
@@ -203,7 +209,7 @@
 			},
 			totalMenu(timeStampa, nonceStra, packageValue, signTypea, paySigna) {
 				const that = this
-				uni.requestPayment({
+				uni[that.apiType]({
 					timeStamp: timeStampa,
 					nonceStr: nonceStra,
 					package: packageValue,
@@ -223,19 +229,29 @@
 							}
 						})
 					},
-					fail() {
+					fail(err) {
 						that.payOnly = false
-						uni.showToast({
+						uni.showModal({
 							title: '支付失败',
-							icon: 'none',
-							mask: true,
-							duration: 1000,
-							success: function () {
-								setTimeout(function () {
+							content: JSON.stringify(err),
+							showCancel: false,
+							success(res) {
+								if (res.confirm) {
 									that.backTo()
-								}, 1000)
+								}
 							}
 						})
+						// uni.showToast({
+						// 	title: '支付失败',
+						// 	icon: 'none',
+						// 	mask: true,
+						// 	duration: 1000,
+						// 	success: function () {
+						// 		setTimeout(function () {
+						// 			that.backTo()
+						// 		}, 1000)
+						// 	}
+						// })
 					}
 				})
 			},
