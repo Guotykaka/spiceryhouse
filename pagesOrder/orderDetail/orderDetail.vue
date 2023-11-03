@@ -331,6 +331,7 @@
 		onLoad(query) {
 			if (query?.q) {
 				let link = paramConversion(decodeURIComponent(query?.q))
+				this.orderId = link?.orderId ?? this.orderId
 			}
 			this.orderId = query?.orderId ?? this.orderId
 			uni.showLoading({

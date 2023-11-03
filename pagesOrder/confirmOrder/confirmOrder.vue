@@ -37,7 +37,7 @@
 			</view>
 		</view>
 		<view class="u-flex u-row-between u-col-center mobile u-m-t-20">
-			<view class="titile">联系电话</view>
+			<view class="titile fs0">联系电话</view>
 			<view>
 				<u-field v-model="mobile" placeholder="请输入" :border-bottom="false" :label-width="0" placeholder-style="font-size: 28rpx;color: #D5D5D5;"> </u-field>
 			</view>
@@ -221,37 +221,37 @@
 							title: '支付成功！',
 							icon: 'success',
 							mask: true,
-							duration: 1000,
+							duration: 1500,
 							success: function () {
 								setTimeout(function () {
 									that.goTo()
-								}, 1000)
+								}, 1500)
 							}
 						})
 					},
 					fail(err) {
 						that.payOnly = false
-						uni.showModal({
-							title: '支付失败',
-							content: JSON.stringify(err),
-							showCancel: false,
-							success(res) {
-								if (res.confirm) {
-									that.backTo()
-								}
-							}
-						})
-						// uni.showToast({
+						// uni.showModal({
 						// 	title: '支付失败',
-						// 	icon: 'none',
-						// 	mask: true,
-						// 	duration: 1000,
-						// 	success: function () {
-						// 		setTimeout(function () {
+						// 	content: JSON.stringify(err),
+						// 	showCancel: false,
+						// 	success(res) {
+						// 		if (res.confirm) {
 						// 			that.backTo()
-						// 		}, 1000)
+						// 		}
 						// 	}
 						// })
+						uni.showToast({
+							title: '支付失败',
+							icon: 'none',
+							mask: true,
+							duration: 1500,
+							success: function () {
+								setTimeout(function () {
+									that.backTo()
+								}, 1500)
+							}
+						})
 					}
 				})
 			},
