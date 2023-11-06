@@ -3,8 +3,8 @@
 	<view class="container">
 		<view class="topbox">
 			<view class="u-flex">
-				<image class="statusimg" :src="`../../static/img/status-${order.reserveStatus == 0 || order.reserveStatus == -1 ? 'red' : 'green'}.png`" mode="aspectFit"></image>
-				<!-- 订单status   1待使用,2:已完成,6已退款 -->
+				<image class="statusimg" :src="`../../static/img/status-${order.reserveStatus == 0 || order.reserveStatus == -1 || order.status == 0 ? 'red' : 'green'}.png`" mode="aspectFit"></image>
+				<!-- 订单status   0待支付1待使用,2:已完成,6已退款 -->
 				<text class="f32 u-m-l-12" v-if="order.status !== 1">{{ orderStatus[order.status] }}</text>
 				<!-- reserveStatus  -1 待预约 , 0 待确认, 1已预约 -->
 				<text class="f32 u-m-l-12" v-else>
@@ -15,9 +15,14 @@
 			<view class="c99 u-m-t-16" v-if="order.status == 1 && order.reserveStatus !== -1">预约时间： {{ order.reserveTime | filTime }} 到店使用</view>
 			<view class="c99 u-m-t-16" v-if="order.status == 2">核销时间： {{ order.completeTime | filTime }} </view>
 			<view class="c99 u-m-t-16" v-if="order.status == 6">退款时间： {{ order.refundConfirmTime | filTime }} </view>
+			<view class="c99 u-m-t-16" v-if="order.status == 0">下单时间： {{ order.createTime | filTime }} </view>
 		</view>
 		<view class="paddingbox">
 			<view class="u-flex">
+				<view class="g-col-center operate" @tap.stop="payOrder()" v-if="order.status == 0">
+					<view><text class="iconfont icon-pay"></text></view>
+					<view class="u-m-t-20">去支付</view>
+				</view>
 				<view class="g-col-center operate" @tap.stop="rejectFuc()" v-if="order.status == 1 && order.reserveStatus !== -1">
 					<view><text class="iconfont icon-clock"></text></view>
 					<view class="u-m-t-20">取消预约</view>
@@ -193,11 +198,11 @@
 					<view>订单金额</view>
 					<view>¥{{ order.originalAmount }}</view>
 				</view>
-				<view class="event u-flex u-row-between f32">
+				<view class="event u-flex u-row-between f32" v-if="!order.status == 0">
 					<view>商品优惠</view>
 					<view>-¥{{ order.discountAmount }}</view>
 				</view>
-				<view class="event u-flex u-row-between f32">
+				<view class="event u-flex u-row-between f32" v-if="!order.status == 0">
 					<view>实付金额</view>
 					<view>¥{{ order.payAmount }}</view>
 				</view>
@@ -325,7 +330,8 @@
 					}
 				},
 				tempFilePath: '',
-				verificationCode: []
+				verificationCode: [],
+				payOnly: false //防抖拦截
 			}
 		},
 		onLoad(query) {
@@ -342,6 +348,7 @@
 		},
 		onShow() {
 			this.showprivacy = true
+			this.payOnly = false
 		},
 		onHide() {
 			this.showprivacy = false
@@ -513,6 +520,71 @@
 							}
 							AjaxApi('RefundOrder', { orderId: it.orderId }, successFuc)
 						}
+					}
+				})
+			},
+			payOrder() {
+				const that = this
+				uni.showLoading({
+					title: '正在支付',
+					mask: true
+				})
+				uni.showNavigationBarLoading()
+				let params = {
+					orderId: that.order.orderId,
+					payType: 1
+				}
+				let successFuc = res => {
+					uni.hideNavigationBarLoading()
+					let respons = res.data.payResp
+					that.totalMenu(respons.timeStamp, respons.nonceStr, respons.packageValue, respons.signType, respons.paySign)
+				}
+				let elseFuc = () => {
+					that.payOnly = false
+				}
+				AjaxApi('PayOrder', params, successFuc, elseFuc)
+			},
+			totalMenu(timeStampa, nonceStra, packageValue, signTypea, paySigna) {
+				const that = this
+				uni.requestOrderPayment({
+					timeStamp: timeStampa,
+					nonceStr: nonceStra,
+					package: packageValue,
+					signType: signTypea,
+					paySign: paySigna,
+					success() {
+						that.payOnly = false
+						uni.showToast({
+							title: '支付成功！',
+							icon: 'success',
+							mask: true,
+							duration: 1500,
+							success: function () {
+								setTimeout(function () {
+									let page = getCurrentPages().pop() //获取当前页面实例
+									if (page == undefined || page == null) return
+									this.showprivacy = true
+									page.onLoad()
+								}, 1500)
+							}
+						})
+					},
+					fail(err) {
+						that.payOnly = false
+						uni.showToast({
+							title: '支付失败',
+							icon: 'none',
+							mask: true,
+							duration: 1500,
+							success: function () {
+								setTimeout(function () {
+									let page = getCurrentPages().pop() //获取当前页面实例
+									if (page == undefined || page == null) return
+									this.showprivacy = true
+									page.onLoad()
+								}, 1500)
+							}
+						})
 					}
 				})
 			}
