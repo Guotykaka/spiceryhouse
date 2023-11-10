@@ -1,10 +1,27 @@
 <template>
 	<!-- 团购详情 -->
 	<view class="container">
-		<!-- 店铺提示 -->
-		<u-navbar immersive :back-icon-color="navBackColor" :is-back="true" :title="navTit" :border-bottom="false" :background="navBackground"></u-navbar>
 		<view>
-			<image class="banner" :src="goodsDetail.pic || '../../static/img/default.png'" mode="aspectFill"></image>
+			<swiper
+				class="swiper"
+				circular
+				:indicator-dots="goodsDetail.pic.length == 1 ? false : true"
+				:autoplay="true"
+				interval="3000"
+				duration="300"
+				indicator-color="rgba(255, 255, 255, 0.34)"
+				indicator-active-color="#FFFFFF">
+				<swiper-item v-if="goodsDetail.pic.length == 0">
+					<view class="swiper-item">
+						<image class="banner" src="../../static/img/default.png" mode="aspectFill"></image>
+					</view>
+				</swiper-item>
+				<swiper-item v-else v-for="(item, i) in goodsDetail.pic" :key="i">
+					<view class="swiper-item">
+						<image class="banner" :src="`${item}`" mode="aspectFill"></image>
+					</view>
+				</swiper-item>
+			</swiper>
 		</view>
 		<view class="info-box">
 			<view class="white-box goods-padding">
@@ -62,7 +79,7 @@
 				</view>
 			</view>
 			<view class="white-box padding">
-				<view class="g-titile"> 套餐详情 </view>
+				<view class="g-titile"> 购买须知 </view>
 				<view class="u-m-t-40">
 					<view class="c66">·可用时间</view>
 					<!-- 0:门店营业时间,1:自定义时间 -->
@@ -175,26 +192,10 @@
 				},
 				showSetting: true,
 				showPhoneGet: false,
-				navBackground: {
-					background: 'transparent',
-					backgroundSize: 'cover'
-				},
-				navBackColor: '#ffffff',
-				navTit: ' ',
 				phone: ''
 			}
 		},
-		onPageScroll(e) {
-			if (e.scrollTop > 100) {
-				this.navBackground.background = '#ffffff'
-				this.navBackColor = '#333333'
-				this.navTit = '详情'
-			} else {
-				this.navBackground.background = 'transparent'
-				this.navBackColor = '#ffffff'
-				this.navTit = ' '
-			}
-		},
+		onPageScroll(e) {},
 		onLoad(query) {
 			if (query?.q) {
 				let link = paramConversion(decodeURIComponent(query?.q))
@@ -240,6 +241,7 @@
 			getGoods() {
 				let successFuc = res => {
 					this.goodsDetail = res.data ?? this.goodsDetail
+					this.goodsDetail.pic = res.data?.pic.split(',')
 				}
 				AjaxApi(
 					'GetGoodsInfo',
@@ -354,7 +356,7 @@
 		.info-box {
 			background: transparent;
 			position: relative;
-			top: -40rpx;
+			top: -20rpx;
 		}
 		.banner {
 			width: 100vw;

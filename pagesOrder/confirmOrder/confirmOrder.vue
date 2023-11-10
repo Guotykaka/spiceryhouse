@@ -4,7 +4,7 @@
 		<view class="goodsbox">
 			<view class="c66 f24">{{ goodsDetail.buyShopDto.shopName }}等{{ goodsDetail.shopCount }}家门店通用</view>
 			<view class="u-flex u-m-t-30">
-				<image class="cover u-m-r-20 fs0" :src="goodsDetail.pic || '../../static/img/default.png'" mode="aspectFill"></image>
+				<image class="cover u-m-r-20 fs0" :src="goodsDetail.iconPic || '../../static/img/default.png'" mode="aspectFill"></image>
 				<view class="g-col-between">
 					<view>
 						<view class="f32 u-line-1">{{ goodsDetail.productName }}</view>

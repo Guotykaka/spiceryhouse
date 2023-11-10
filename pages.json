@@ -132,9 +132,8 @@
 						"navigationBarTitleText": "团购详情",
 						"navigationBarBackgroundColor": "#FFFFFF",
 						"backgroundColor": "#f3f3f7",
-						"navigationBarTextStyle": "white",
-						"enablePullDownRefresh": true,
-						"navigationStyle": "custom"
+						"navigationBarTextStyle": "black",
+						"enablePullDownRefresh": true
 					}
 				},
 				{

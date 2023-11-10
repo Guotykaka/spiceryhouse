@@ -30,7 +30,7 @@
 				<view class="goods-list">
 					<view class="goodsbox" :class="{ 'u-m-b-20': i < goodsList.left - 1 }" v-for="(item, i) in goodsList" :key="i">
 						<view class="u-flex" :class="{ 'u-m-b-40': i < goodsList.left - 1 }">
-							<image class="cover u-m-r-24 fs0" :src="item.pic || '../../static/img/default.png'" mode="aspectFill"></image>
+							<image class="cover u-m-r-24 fs0" :src="item.iconPic || '../../static/img/default.png'" mode="aspectFill"></image>
 							<view class="g-col-between">
 								<view>
 									<view class="f32 u-line-1">{{ item.productName }}</view>
@@ -226,7 +226,7 @@
 		.info-box {
 			background: transparent;
 			position: relative;
-			top: -40rpx;
+			top: -20rpx;
 		}
 		.white-box {
 			width: auto;

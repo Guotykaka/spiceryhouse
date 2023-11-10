@@ -18,7 +18,7 @@
 			<scroll-view scroll-y @scrolltolower="init(false)" class="scroll-height" :scrollTop="scrollTop" @scroll="scrollFuc">
 				<view class="order u-m-b-20" v-for="(item, i) in pageList" :key="i" @tap.stop="toDetail(item)">
 					<view class="u-flex u-m-b-20">
-						<image class="cover u-m-r-20 fs0" :src="item.pic || '../../static/img/default.png'" mode="aspectFill"></image>
+						<image class="cover u-m-r-20 fs0" :src="item.iconPic || '../../static/img/default.png'" mode="aspectFill"></image>
 						<view class="g-col-between flex1">
 							<view class="f32">{{ item.itemName }}</view>
 							<view class="f34 u-flex u-row-between">

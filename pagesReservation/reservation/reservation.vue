@@ -363,7 +363,7 @@
 			padding: 0 20rpx;
 			background: transparent;
 			position: relative;
-			top: -40rpx;
+			top: -20rpx;
 		}
 		.white-box {
 			width: auto;
