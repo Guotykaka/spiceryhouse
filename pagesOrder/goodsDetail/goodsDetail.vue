@@ -12,14 +12,10 @@
 				indicator-color="rgba(255, 255, 255, 0.34)"
 				indicator-active-color="#FFFFFF">
 				<swiper-item v-if="goodsDetail.pic.length == 0">
-					<view class="swiper-item">
-						<image class="banner" src="../../static/img/default.png" mode="aspectFill"></image>
-					</view>
+					<image class="banner" src="../../static/img/default.png" mode="aspectFill"></image>
 				</swiper-item>
 				<swiper-item v-else v-for="(item, i) in goodsDetail.pic" :key="i">
-					<view class="swiper-item">
-						<image class="banner" :src="`${item}`" mode="aspectFill"></image>
-					</view>
+					<image class="banner" :src="item" mode="aspectFill"></image>
 				</swiper-item>
 			</swiper>
 		</view>
