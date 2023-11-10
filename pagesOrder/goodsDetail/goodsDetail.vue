@@ -2,15 +2,7 @@
 	<!-- 团购详情 -->
 	<view class="container">
 		<view>
-			<swiper
-				class="swiper"
-				circular
-				:indicator-dots="goodsDetail.pic.length == 1 ? false : true"
-				:autoplay="true"
-				interval="3000"
-				duration="300"
-				indicator-color="rgba(255, 255, 255, 0.34)"
-				indicator-active-color="#FFFFFF">
+			<swiper class="swiper" circular :indicator-dots="false" :autoplay="true" interval="3000" duration="300">
 				<swiper-item v-if="goodsDetail.pic.length == 0">
 					<image class="banner" src="../../static/img/default.png" mode="aspectFill"></image>
 				</swiper-item>
@@ -353,6 +345,9 @@
 			background: transparent;
 			position: relative;
 			top: -20rpx;
+		}
+		.swiper {
+			height: 360rpx;
 		}
 		.banner {
 			width: 100vw;
