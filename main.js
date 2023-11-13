@@ -12,6 +12,9 @@ Vue.mixin(Mixins)
 import privacySetting from './components/privacySetting/privacySetting.vue'
 Vue.component('privacy-setting', privacySetting)
 
+import loading from './components/loading/loading.vue'
+Vue.component('loading', loading)
+
 App.mpType = 'app'
 
 const app = new Vue({

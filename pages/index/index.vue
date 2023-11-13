@@ -2,7 +2,7 @@
 	<!-- 预约 -->
 	<view class="container">
 		<view>
-			<image class="banner" :src="currentShop.shopHeadPic || '../../static/img/default.png'" mode="aspectFill"></image>
+			<image class="banner" :src="currentShop.shopHeadPic || '../../static/img/shopHeadPic.jpg'" mode="aspectFill"></image>
 		</view>
 		<view class="info-box">
 			<view class="white-box padding g-shop-info" @tap="toShop">
@@ -63,6 +63,7 @@
 		<g-get-phone :show="showPhoneGet"></g-get-phone>
 		<qr-code ref="qrcode" :shop-name="currentShop.shopName" :shop-code="currentShop.companyWeixinCode"></qr-code>
 		<canvas class="g-cav" canvas-id="myQrcode"></canvas>
+		<loading :show="showLoading"></loading>
 	</view>
 </template>
 <script>
@@ -75,6 +76,7 @@
 		components: { gGetPhone, qrCode },
 		data() {
 			return {
+				showLoading: true,
 				showprivacy: false,
 				goodsList: [],
 				currentShop: {
@@ -99,10 +101,11 @@
 			getApp().globalData.currentShopId = 0
 		},
 		onShow() {
-			uni.showLoading({
-				title: '加载中',
-				mask: false
-			})
+			this.showLoading = true
+			// uni.showLoading({
+			// 	title: '加载中',
+			// 	mask: false
+			// })
 			Object.assign(this.$data, this.$options.data())
 			this.showprivacy = true
 			let openFuc = () => {
@@ -142,7 +145,7 @@
 					userLongitude: getApp().globalData.location.longitude * 1
 				}
 				let successFuc = res => {
-					uni.hideLoading()
+					this.showLoading = false
 					this.currentShop = res.data ?? this.currentShop
 					getApp().globalData.currentShopId = this.currentShop.shopId
 				}
@@ -150,6 +153,7 @@
 			},
 			getGoods() {
 				let successFuc = res => {
+					this.showLoading = false
 					this.goodsList = res.data
 				}
 				AjaxApi('GetGoodsList', {}, successFuc)
@@ -211,7 +215,7 @@
 		min-height: 100vh;
 		.banner {
 			width: 100vw;
-			height: 360rpx;
+			height: 56.25vw;
 			vertical-align: bottom;
 			background: white;
 		}

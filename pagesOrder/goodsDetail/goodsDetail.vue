@@ -121,6 +121,7 @@
 		</view>
 		<privacy-setting v-if="showprivacy"></privacy-setting>
 		<g-get-phone :show="showPhoneGet"></g-get-phone>
+		<loading :show="showLoading"></loading>
 	</view>
 </template>
 <script>
@@ -134,6 +135,7 @@
 		data() {
 			return {
 				goodsId: 0,
+				showLoading: true,
 				showprivacy: false,
 				goodsDetail: {
 					productId: 0, //商品Id
@@ -190,10 +192,11 @@
 				this.goodsId = link?.goodsId ?? this.goodsId
 			}
 			this.goodsId = query?.goodsId ?? this.goodsId
-			uni.showLoading({
-				title: '加载中',
-				mask: false
-			})
+			// uni.showLoading({
+			// 	title: '加载中',
+			// 	mask: false
+			// })
+			this.showLoading = true
 			let openFuc = () => {
 				this.showSetting = false
 			}
@@ -228,6 +231,7 @@
 			},
 			getGoods() {
 				let successFuc = res => {
+					this.showLoading = false
 					this.goodsDetail = res.data ?? this.goodsDetail
 					this.goodsDetail.pic = res.data?.pic.split(',')
 				}

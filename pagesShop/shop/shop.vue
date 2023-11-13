@@ -3,7 +3,7 @@
 	<view class="container">
 		<u-navbar immersive :back-icon-color="navBackColor" :is-back="true" :title="navTit" :border-bottom="false" :background="navBackground"></u-navbar>
 		<view>
-			<image class="banner" :src="currentShop.shopHeadPic || '../../static/img/default.png'" mode="aspectFill"></image>
+			<image class="banner" :src="currentShop.shopHeadPic || '../../static/img/shopHeadPic.jpg'" mode="aspectFill"></image>
 		</view>
 		<view class="info-box">
 			<view class="white-box padding g-shop-info">
@@ -219,7 +219,7 @@
 		min-height: 100vh;
 		.banner {
 			width: 100vw;
-			height: 360rpx;
+			height: 56.25vw;
 			vertical-align: bottom;
 			background: white;
 		}

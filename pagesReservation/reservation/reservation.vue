@@ -30,7 +30,7 @@
 			</view>
 		</u-modal>
 		<view>
-			<image class="banner" :src="currentShop.shopHeadPic || '../../static/img/default.png'" mode="aspectFit"></image>
+			<image class="banner" :src="currentShop.shopHeadPic || '../../static/img/shopHeadPic.jpg'" mode="aspectFit"></image>
 		</view>
 		<view class="info-box">
 			<view class="white-box padding g-shop-info">
@@ -334,7 +334,7 @@
 		}
 		.banner {
 			width: 100vw;
-			height: 360rpx;
+			height: 56.25vw;
 			vertical-align: bottom;
 			background: white;
 		}
