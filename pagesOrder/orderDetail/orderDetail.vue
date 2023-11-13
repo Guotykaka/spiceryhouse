@@ -278,7 +278,7 @@
 					productId: 0,
 					skuId: '',
 					price: 0,
-					pic: '',
+					pic: '', //商品缩略图 单张
 					path: '',
 					originalAmount: 0,
 					discountAmount: 0,
