@@ -38,7 +38,7 @@
 				<view class="f32 tit">项目信息</view>
 				<view class="info-box">
 					<view class="name">
-						<image class="goods-pic fs0 u-m-r-20" :src="order.iconPic || '../../static/img/default.png'" mode="aspectFill"></image>
+						<image class="goods-pic fs0 u-m-r-20" :src="order.pic || '../../static/img/default.png'" mode="aspectFill"></image>
 						<view class="g-col-between goods-text flex1">
 							<view>
 								<view class="f32 u-line-1">{{ order.itemName }}</view>

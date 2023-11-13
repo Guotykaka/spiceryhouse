@@ -104,10 +104,10 @@ export const SHARE_URL = '' //分享使用的封面图片
 
 // 正式环境;
 // "appid" : "wx4a7405ea1259af05",
-export const URL = 'https://api.guobi.com.cn' //
+// export const URL = 'https://api.guobi.com.cn' //
 //测试环境
 // "appid" : "wx4a7405ea1259af05",
-// export const URL = 'https://testfxsjapi.whxiaoshi.com' //
+export const URL = 'https://testfxsjapi.whxiaoshi.com' //
 
 export function PromiseAll(
 	proarr,
