@@ -4,7 +4,7 @@
 		<view>
 			<swiper class="swiper" circular :indicator-dots="false" :autoplay="true" interval="3000" duration="300">
 				<swiper-item v-if="goodsDetail.pic.length == 0">
-					<image class="banner" src="../../static/img/default.png" mode="aspectFill"></image>
+					<image class="banner" src="../../static/img/logo.jpg" mode="aspectFill"></image>
 				</swiper-item>
 				<swiper-item v-else v-for="(item, i) in goodsDetail.pic" :key="i">
 					<image class="banner" :src="item" mode="aspectFill"></image>
