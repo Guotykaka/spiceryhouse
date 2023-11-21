@@ -16,9 +16,9 @@
 				<view>预约时间</view>
 				<view>{{ order.reserveTime }}</view>
 			</view>
-			<view class="flex u-row-between u-m-t-30">
+			<view class="flex u-row-between u-m-t-30" @tap="phoneCall()">
 				<view>联系电话</view>
-				<view>{{ order.phone }}</view>
+				<text user-select>{{ order.shop.relationPhone }}</text>
 			</view>
 			<view class="qrcode u-m-t-40" v-if="order.shop.companyWeixinCode">
 				<image class="code" :src="order.shop.companyWeixinCode" mode="widthFix" show-menu-by-longpress @tap="preImg"></image>
@@ -82,6 +82,12 @@
 				wx.previewImage({
 					urls: [that.order.shop.companyWeixinCode],
 					showmenu: true
+				})
+			},
+			phoneCall() {
+				let item = this.order.shop
+				uni.makePhoneCall({
+					phoneNumber: item.relationPhone
 				})
 			}
 		}
