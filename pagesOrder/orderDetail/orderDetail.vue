@@ -439,6 +439,7 @@
 								title: '提示',
 								content: '请先打开小程序定位权限',
 								showCancel: false,
+								confirmColor: '#fe2b54',
 								success(res) {
 									if (res.confirm) {
 										uni.openSetting()
@@ -464,6 +465,7 @@
 				uni.showModal({
 					title: '提示',
 					content: '是否确认取消预约！',
+					confirmColor: '#fe2b54',
 					success: function (res) {
 						if (res.confirm) {
 							uni.showLoading({
@@ -496,6 +498,7 @@
 				uni.showModal({
 					title: '提示',
 					content: '是否确认退款！',
+					confirmColor: '#fe2b54',
 					success: function (res) {
 						if (res.confirm) {
 							uni.showLoading({

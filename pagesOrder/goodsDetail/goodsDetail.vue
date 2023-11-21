@@ -273,6 +273,7 @@
 								title: '提示',
 								content: '请先打开小程序定位权限',
 								showCancel: false,
+								confirmColor: '#fe2b54',
 								success(res) {
 									if (res.confirm) {
 										uni.openSetting()

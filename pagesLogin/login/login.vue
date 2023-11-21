@@ -63,7 +63,8 @@
 						title: '温馨提示',
 						content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入',
 						showCancel: false,
-						confirmText: '确定'
+						confirmText: '确定',
+						confirmColor: '#fe2b54'
 					})
 				}
 			},

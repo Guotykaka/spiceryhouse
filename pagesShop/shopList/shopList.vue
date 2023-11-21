@@ -137,6 +137,7 @@
 							uni.showModal({
 								title: '提示',
 								content: '请先打开小程序定位权限',
+								confirmColor: '#fe2b54',
 								showCancel: false,
 								success(res) {
 									if (res.confirm) {

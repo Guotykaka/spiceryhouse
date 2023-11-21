@@ -92,6 +92,7 @@ export const getTTLocation = (fuc = () => {}, openFuc = () => {}, showModal = fa
 				uni.showModal({
 					title: '提示',
 					content: '请先打开小程序定位权限，方便给您提供更好的购物体验!',
+					confirmColor: '#fe2b54',
 					success(res) {
 						if (res.confirm) {
 							openFuc()

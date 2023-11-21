@@ -166,6 +166,7 @@
 				uni.showModal({
 					title: '提示',
 					content: '是否确认取消预约！',
+					confirmColor: '#fe2b54',
 					success: function (res) {
 						if (res.confirm) {
 							uni.showLoading({

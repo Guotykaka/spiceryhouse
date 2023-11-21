@@ -68,6 +68,7 @@
 							uni.showModal({
 								title: '更新提示',
 								content: '检测到新版本，是否下载新版本并重启小程序？',
+								confirmColor: '#fe2b54',
 								success: function (res) {
 									if (res.confirm) {
 										//2. 用户确定下载更新小程序，小程序下载及更新静默进行
@@ -95,7 +96,8 @@
 					// 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
 					uni.showModal({
 						title: '提示',
-						content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+						content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。',
+						confirmColor: '#fe2b54'
 					})
 				}
 			},
@@ -115,7 +117,8 @@
 					// 新的版本下载失败
 					uni.showModal({
 						title: '已经有新版本',
-						content: '新版本已经上线啦，请您删除当前小程序，重新搜索打开'
+						content: '新版本已经上线啦，请您删除当前小程序，重新搜索打开',
+						confirmColor: '#fe2b54'
 					})
 				})
 			},
