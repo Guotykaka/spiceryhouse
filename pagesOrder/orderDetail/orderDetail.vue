@@ -3,8 +3,11 @@
 	<view class="container">
 		<view class="topbox">
 			<view class="u-flex">
-				<image class="statusimg" :src="`../../static/img/status-${order.reserveStatus == 0 || order.reserveStatus == -1 || order.status == 0 ? 'red' : 'green'}.png`" mode="aspectFit"></image>
-				<!-- 订单status   0待支付1待使用,2:已完成,6已退款 -->
+				<image
+					class="statusimg"
+					:src="`../../static/img/status-${order.reserveStatus == 0 || order.reserveStatus == -1 || order.status == 0 || order.status == 3 ? 'red' : 'green'}.png`"
+					mode="aspectFit"></image>
+				<!-- 订单status   0待支付1待使用,2:已完成,3:已取消,6已退款 -->
 				<text class="f32 u-m-l-12" v-if="order.status !== 1">{{ orderStatus[order.status] }}</text>
 				<!-- reserveStatus  -1 待预约 , 0 待确认, 1已预约 -->
 				<text class="f32 u-m-l-12" v-else>
@@ -15,7 +18,7 @@
 			<view class="c99 u-m-t-16" v-if="order.status == 1 && order.reserveStatus !== -1">预约时间： {{ order.reserveTime | filTime }} 到店使用</view>
 			<view class="c99 u-m-t-16" v-if="order.status == 2">核销时间： {{ order.completeTime | filTime }} </view>
 			<view class="c99 u-m-t-16" v-if="order.status == 6">退款时间： {{ order.refundConfirmTime | filTime }} </view>
-			<view class="c99 u-m-t-16" v-if="order.status == 0">下单时间： {{ order.createTime | filTime }} </view>
+			<view class="c99 u-m-t-16" v-if="order.status == 0 || order.status == 3">下单时间： {{ order.createTime | filTime }} </view>
 		</view>
 		<view class="paddingbox">
 			<view class="u-flex">
@@ -198,11 +201,11 @@
 					<view>订单金额</view>
 					<view>¥{{ order.originalAmount }}</view>
 				</view>
-				<view class="event u-flex u-row-between f32" v-if="!order.status == 0">
+				<view class="event u-flex u-row-between f32" v-if="!order.status == 0 && !order.status == 3">
 					<view>商品优惠</view>
 					<view>-¥{{ order.discountAmount }}</view>
 				</view>
-				<view class="event u-flex u-row-between f32" v-if="!order.status == 0">
+				<view class="event u-flex u-row-between f32" v-if="!order.status == 0 && !order.status == 3">
 					<view>实付金额</view>
 					<view>¥{{ order.payAmount }}</view>
 				</view>
