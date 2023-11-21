@@ -80,13 +80,11 @@
 									})
 								}, 1500)
 							}
-							let elseFuc = () => {}
-							AjaxApi('QueryUserInfo', {}, successFuc, elseFuc)
+							AjaxApi('QueryUserInfo', {}, successFuc)
 						}
 					})
 				}
-				let elseFuc = () => {}
-				AjaxApi('LoginByPhoneAndCode', params, successFuc, elseFuc)
+				AjaxApi('LoginByPhoneAndCode', params, successFuc)
 			},
 			getPhone(e) {
 				this.userPhone = e.detail.value
@@ -111,8 +109,7 @@
 							this.$refs.uCode.start()
 						}
 					}
-					let elseFuc = () => {}
-					AjaxApi('GetLoginMsgCode', params, successFuc, elseFuc)
+					AjaxApi('GetLoginMsgCode', params, successFuc)
 				} else {
 					this.$u.toast('倒计时结束后再发送')
 				}

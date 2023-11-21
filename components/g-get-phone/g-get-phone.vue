@@ -76,8 +76,7 @@
 							this.$refs.uCode.start()
 						}
 					}
-					let elseFuc = () => {}
-					AjaxApi('GetLoginMsgCode', params, successFuc, elseFuc)
+					AjaxApi('GetLoginMsgCode', params, successFuc)
 				} else {
 					this.$u.toast('倒计时结束后再发送')
 				}

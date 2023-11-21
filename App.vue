@@ -8,6 +8,7 @@
 			}
 		},
 		globalData: {
+			httpConfig: {},
 			resolvePrivacyAuthorization: () => {},
 			needAuthorization: false, //用户隐私许可
 			privacyContractName: '', //隐私许可

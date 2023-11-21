@@ -20,8 +20,7 @@ export async function onLogin(...args) {
 				page.onLoad()
 				page.onShow()
 			}
-			let elseFuc = () => {}
-			AjaxApi('AuthUrl', params, successFuc, elseFuc)
+			AjaxApi('AuthUrl', params, successFuc)
 		},
 		fail: function (res) {
 			console.log(res)
